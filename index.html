@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOM | Portfolio</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Prompt', sans-serif;
+            background: #0d0912;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* =====================================
+           HEADER
+        ===================================== */
+        header {
+            height: 75px;
+            padding: 0 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(13, 9, 18, 0.92);
+            border-bottom: 1px solid rgba(190, 100, 255, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 600;
+            color: #c979ff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        /* =====================================
+           NAVIGATION
+        ===================================== */
+        nav {
+            display: flex;
+            gap: 5px;
+        }
+
+        nav button {
+            border: none;
+            background: transparent;
+            color: #bdb5c4;
+            font-family: 'Prompt', sans-serif;
+            padding: 9px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav button:hover {
+            color: white;
+        }
+
+        nav button.active {
+            color: white;
+            background: #8e3fc1;
+            box-shadow: 0 0 20px rgba(179, 80, 240, 0.25);
+        }
+
+        /* =====================================
+           PAGE SYSTEM
+        ===================================== */
+        .page {
+            display: none;
+            min-height: calc(100vh - 75px);
+            padding: 50px 7%;
+            animation: pageShow 0.4s ease;
+        }
+
+        .page.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes pageShow {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =====================================
+           HOME
+        ===================================== */
+        .home-container {
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .small-title {
+            color: #c978ff;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .home-text h2 {
+            font-size: 60px;
+            line-height: 1.15;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .home-text h2 span {
+            color: #bd62f5;
+        }
+
+        .typing {
+            color: #d7b0ea;
+            font-size: 23px;
+            min-height: 38px;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            max-width: 620px;
+            color: #aaa1b0;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        /* =====================================
+           BUTTON
+        ===================================== */
+        .buttons {
+            margin-top: 28px;
+        }
+
+        .main-btn,
+        .outline-btn {
+            border: none;
+            font-family: 'Prompt', sans-serif;
+            padding: 11px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 8px;
+            transition: 0.3s;
+        }
+
+        .main-btn {
+            color: white;
+            background: #9143c2;
+            box-shadow: 0 5px 20px rgba(145, 67, 194, 0.25);
+        }
+
+        .main-btn:hover {
+            background: #a84ddf;
+            transform: translateY(-3px);
+        }
+
+        .outline-btn {
+            color: #d8b9e7;
+            background: transparent;
+            border: 1px solid rgba(202, 130, 240, 0.35);
+        }
+
+        .outline-btn:hover {
+            background: rgba(178, 79, 230, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* =====================================
+           PROFILE
+        ===================================== */
+        .profile-box {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, rgba(150, 60, 200, 0.12), rgba(255,255,255,0.02));
+            border: 1px solid rgba(194, 108, 241, 0.15);
+        }
+
+        .profile-circle {
+            width: 210px;
+            height: 210px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #c979ff;
+            background: #211827;
+            box-shadow: 0 0 20px rgba(201, 121, 255, 0.4), 0 0 60px rgba(174, 76, 226, 0.25);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .profile-box h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .profile-box p {
+            color: #a79daa;
+            font-size: 14px;
+        }
+
+        /* =====================================
+           CONTENT
+        ===================================== */
+        .content {
+            width: 100%;
+            max-width: 1050px;
+        }
+
+        .page-title {
+            margin-bottom: 35px;
+        }
+
+        .page-title small {
+            color: #b95ee9;
+            letter-spacing: 2px;
+            font-size: 12px;
+        }
+
+        .page-title h2 {
+            font-size: 40px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .page-title h2 span {
+            color: #c56af2;
+        }
+
+        /* =====================================
+           ABOUT
+        ===================================== */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .info-box {
+            padding: 28px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: 0.3s;
+        }
+
+        .info-box:hover {
+            border-color: rgba(194, 100, 240, 0.35);
+            transform: translateY(-4px);
+        }
+
+        .info-box h3 {
+            color: #d087f5;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .info-box p {
+            color: #aaa2af;
+            line-height: 1.9;
+            font-size: 15px;
+        }
+
+        /* =====================================
+           SKILLS
+        ===================================== */
+        .skills-list {
+            max-width: 750px;
+        }
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: #d4ccd9;
+            font-size: 15px;
+        }
+
+        .skill-name span {
+            color: #a75bd0;
+        }
+
+        .skill-bar {
+            height: 7px;
+            background: #211827;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-bar span {
+            display: block;
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #75359c, #c76af1);
+        }
+
+        /* =====================================
+           PROJECTS
+        ===================================== */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            overflow: hidden;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-6px);
+            border-color: rgba(195, 102, 242, 0.4);
+        }
+
+        .project-image {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            background: linear-gradient(135deg, #422052, #873eb0);
+        }
+
+        .project-text {
+            padding: 22px;
+        }
+
+        .project-text h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #d38af4;
+        }
+
+        .project-text p {
+            color: #aaa2af;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* =====================================
+           ACTIVITIES
+        ===================================== */
+        .activity-list {
+            max-width: 800px;
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 20px;
+            padding: 22px;
+            margin-bottom: 15px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: 0.3s;
+        }
+
+        .activity-item:hover {
+            transform: translateX(5px);
+            border-color: rgba(195,102,242,0.4);
+        }
+
+        .activity-icon {
+            min-width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: rgba(170, 72, 218, 0.15);
+            font-size: 27px;
+        }
+
+        .activity-item h3 {
+            color: #d28af3;
+            margin-bottom: 5px;
+        }
+
+        .activity-item p {
+            color: #aaa2af;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* =====================================
+           CONTACT
+        ===================================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .contact-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: 0.3s;
+        }
+
+        .contact-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(195,102,242,0.4);
+        }
+
+        .contact-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .contact-box h3 {
+            color: #d18af2;
+            margin-bottom: 5px;
+        }
+
+        .contact-box p {
+            color: #aaa2af;
+            font-size: 14px;
+        }
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #706878;
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+        @media (max-width: 800px) {
+            header {
+                height: auto;
+                padding: 15px;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav button {
+                font-size: 11px;
+                padding: 7px 9px;
+            }
+
+            .page {
+                min-height: calc(100vh - 120px);
+                padding: 35px 18px;
+            }
+
+            .home-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .home-text h2 {
+                font-size: 42px;
+            }
+
+            .typing {
+                font-size: 20px;
+            }
+
+            .description {
+                margin: auto;
+            }
+
+            .profile-box {
+                max-width: 350px;
+                margin: auto;
+            }
+
+            .profile-circle {
+                width: 180px;
+                height: 180px;
+            }
+
+            .page-title h2 {
+                font-size: 32px;
+            }
+
+            .about-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        BOOM<span>.</span>
+    </div>
+
+    <nav>
+        <button class="active" onclick="showPage('home', this)">หน้าแรก</button>
+        <button onclick="showPage('about', this)">เกี่ยวกับ</button>
+        <button onclick="showPage('skills', this)">ทักษะ</button>
+        <button onclick="showPage('projects', this)">ผลงาน</button>
+        <button onclick="showPage('activities', this)">กิจกรรม</button>
+        <button onclick="showPage('contact', this)">ติดต่อ</button>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section id="home" class="page active">
+    <div class="home-container">
+        <div class="home-text">
+            <div class="small-title">PORTFOLIO / 2026</div>
+            <h2>พีรพล <span>อ่างแก้ว</span></h2> 
+            <div class="typing"><span id="typing"></span></div>
+            <p class="description">
+                สวัสดีครับ ผมชื่อบูม นักเรียนชั้น ม.4 โรงเรียนสามร้อยยอดวิทยาคม<br>
+                ผมสนใจด้านการถ่ายภาพ การถ่ายวิดีโอ และการเขียนโปรแกรม พร้อมเรียนรู้และพัฒนาตัวเองอยู่เสมอ
+            </p>
+            <div class="buttons">
+                <button class="main-btn" onclick="goTo('projects')">ดูผลงาน</button>
+                <button class="outline-btn" onclick="goTo('contact')">ติดต่อผม</button>
+            </div>
+        </div>
+
+        <div class="profile-box">
+            <div class="profile-circle">
+                <!-- ปรับเปลี่ยนชื่อไฟล์เป็น profile.png เพื่อแก้ปัญหารูปไม่ขึ้นบน GitHub Pages -->
+               <img src="https://i.postimg.cc/cL65jfr4/profile-png.png" alt="100">
+            </div>
+            <h3>BOOM</h3>
+            <p>Photographer · Video · Programming</p>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="page">
+    <div class="content">
+        <div class="page-title">
+            <small>ABOUT ME</small>
+            <h2>เกี่ยวกับ<span>ฉัน</span></h2>
+        </div>
+        <div class="about-layout">
+            <div class="info-box">
+                <h3>👤 ข้อมูลส่วนตัว</h3>
+                <p>
+                    ชื่อ : พีรพล อ่างแก้ว<br>
+                    ชื่อเล่น : บูม<br>
+                    ระดับชั้น : ม.4<br>
+                    โรงเรียน : สามร้อยยอดวิทยาคม
+                </p>
+            </div>
+            <div class="info-box">
+                <h3>💡 ความสนใจ</h3>
+                <p>
+                    สนใจด้านกล้อง การถ่ายภาพ การถ่ายวิดีโอ และการเขียนโปรแกรม<br><br>
+                    ชอบเรียนรู้สิ่งใหม่ ๆ และนำความรู้มาพัฒนาตัวเอง
+                </p>
+            </div>
+            <div class="info-box">
+                <h3>🎯 เป้าหมาย</h3>
+                <p>เรียนให้จบ พัฒนาความสามารถ และเพิ่มประสบการณ์ให้กับตัวเองมากขึ้น</p>
+            </div>
+            <div class="info-box">
+                <h3>✨ ตัวตนของผม</h3>
+                <p>เป็นคนที่ชอบทำงานเกี่ยวกับภาพและวิดีโอ และอยากพัฒนาทักษะให้เก่งขึ้นเรื่อย ๆ</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="page">
+    <div class="content">
+        <div class="page-title">
+            <small>MY SKILLS</small>
+            <h2>ทักษะ<span>ของฉัน</span></h2>
+        </div>
+        <div class="skills-list">
+            <div class="skill">
+                <div class="skill-name">
+                    <span>📷 Photography</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar"><span style="width:85%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">
+                    <span>🎥 Video</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar"><span style="width:90%"></span></div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">
+                    <span>💻 Programming</span>
+                    <span>65%</span>
+                </div>
+                <div class="skill-bar"><span style="width:65%"></span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="page">
+    <div class="content">
+        <div class="page-title">
+            <small>MY PROJECTS</small>
+            <h2>ผลงาน<span>ของฉัน</span></h2>
+        </div>
+        <div class="projects">
+            <div class="project">
+                <div class="project-image">📷</div>
+                <div class="project-text">
+                    <h3>ตากล้องโรงเรียน</h3>
+                    <p>ทำงานเป็นตากล้อง ถ่ายภาพและวิดีโอ ให้กับกิจกรรมต่าง ๆ ของโรงเรียน</p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-image">🎥</div>
+                <div class="project-text">
+                    <h3>วิดีโอกีฬาสี</h3>
+                    <p>ถ่ายภาพและวิดีโอ บรรยากาศกิจกรรม กีฬาสีของโรงเรียน</p>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-image">🎬</div>
+                <div class="project-text">
+                    <h3>วิดีโอกิจกรรม</h3>
+                    <p>ถ่ายวิดีโอวันแม่ วันครู และกิจกรรมอื่น ๆ ของโรงเรียน</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities" class="page">
+    <div class="content">
+        <div class="page-title">
+            <small>ACTIVITIES</small>
+            <h2>กิจกรรม & <span>รางวัล</span></h2>
+        </div>
+        <div class="activity-list">
+            <div class="activity-item">
+                <div class="activity-icon">🏆</div>
+                <div>
+                    <h3>ได้รับรางวัล</h3>
+                    <p>ได้รับรางวัลจากกิจกรรม ที่เข้าร่วมภายในโรงเรียน</p>
+                </div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-icon">📷</div>
+                <div>
+                    <h3>ตากล้องโรงเรียน</h3>
+                    <p>มีส่วนร่วมในการถ่ายภาพ และถ่ายวิดีโอ สำหรับกิจกรรมต่าง ๆ ของโรงเรียน</p>
+                </div>
+            </div>
+            <div class="activity-item">
+                <div class="activity-icon">🎬</div>
+                <div>
+                    <h3>กิจกรรมด้านวิดีโอ</h3>
+                    <p>มีผลงานการถ่ายวิดีโอ ในกิจกรรมวันแม่ วันครู กีฬาสี และกิจกรรมอื่น ๆ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="page">
+    <div class="content">
+        <div class="page-title">
+            <small>CONTACT</small>
+            <h2>ติดต่อ<span>ผม</span></h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-box">
+                <div class="contact-icon">📸</div>
+                <h3>Instagram</h3>
+                <p>mon789._</p>
+            </div>
+            <div class="contact-box">
+                <div class="contact-icon">💬</div>
+                <h3>LINE</h3>
+                <p>Boom</p>
+            </div>
+            <div class="contact-box">
+                <div class="contact-icon">📞</div>
+                <h3>โทรศัพท์</h3>
+                <p>090-229-2496</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 BOOM · Portfolio
+</footer>
+
+<script>
+    function showPage(pageId, button) {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active'));
+
+        document.getElementById(pageId).classList.add('active');
+
+        const buttons = document.querySelectorAll('nav button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        if (button) {
+            button.classList.add('active');
+        }
+
+        window.scrollTo(0, 0);
+    }
+
+    function goTo(pageId) {
+        const buttons = document.querySelectorAll('nav button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        const target = document.getElementById(pageId);
+        target.classList.add('active');
+
+        buttons.forEach(btn => {
+            if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(pageId)) {
+                btn.classList.add('active');
+            }
+        });
+
+        window.scrollTo(0, 0);
+    }
+
+    const words = ["นักเรียน ม.4", "ช่างภาพ", "คนถ่ายวิดีโอ", "Programmer"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    const typing = document.getElementById('typing');
+
+    function typeEffect() {
+        const word = words[wordIndex];
+
+        if (!deleting) {
+            typing.textContent = word.substring(0, charIndex + 1);
+            charIndex++;
+
+            if (charIndex === word.length) {
+                deleting = true;
+                setTimeout(typeEffect, 1200);
+                return;
+            }
+        } else {
+            typing.textContent = word.substring(0, charIndex - 1);
+            charIndex--;
+
+            if (charIndex === 0) {
+                deleting = false;
+                wordIndex++;
+                if (wordIndex >= words.length) {
+                    wordIndex = 0;
+                }
+            }
+        }
+
+        setTimeout(typeEffect, deleting ? 50 : 100);
+    }
+
+    typeEffect();
+</script>
+
+</body>
+</html>
